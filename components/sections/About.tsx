@@ -17,7 +17,7 @@ const About = () => {
 
   // Frontend Skills
   const frontendSkills = [
-    { name: 'React', level: 90, icon: '⚛️' },
+    { name: 'React', level: 85, icon: '⚛️' },
     { name: 'TypeScript', level: 70, icon: '📘' },
     { name: 'TailwindCSS', level: 90, icon: '🎨' },
     { name: 'JavaScript', level: 75, icon: '🧡' }
