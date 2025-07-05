@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Moon, Sun, Globe } from 'lucide-react';
-import { useTheme } from '@/contexts/ThemeContext';
+import { Menu, X, Moon, Sun, Globe, Monitor } from 'lucide-react';
+import { useTheme } from 'next-themes';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import {
@@ -17,7 +17,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const { theme, toggleTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const { language, setLanguage, t } = useLanguage();
 
   const navItems = [
@@ -32,6 +32,12 @@ const Header = () => {
     { code: 'en', name: 'EN', flag: '🇺🇸' },
     { code: 'uz', name: 'UZ', flag: '🇺🇿' },
     { code: 'ru', name: 'RU', flag: '🇷🇺' },
+  ];
+
+  const themes = [
+    { value: 'light', label: 'Light', icon: Sun },
+    { value: 'dark', label: 'Dark', icon: Moon },
+    { value: 'system', label: 'System', icon: Monitor },
   ];
 
   useEffect(() => {
@@ -140,19 +146,37 @@ const Header = () => {
 
           {/* Desktop Controls */}
           <div className="hidden lg:flex items-center space-x-3 z-[105]">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleTheme}
-              className="hover:bg-blue-500/10 z-[106] w-9 h-9"
-            >
-              {theme === 'dark' ? (
-                <Sun className="h-4 w-4" />
-              ) : (
-                <Moon className="h-4 w-4" />
-              )}
-            </Button>
+            {/* Theme Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="hover:bg-blue-500/10 z-[106] w-9 h-9">
+                  {resolvedTheme === 'dark' ? (
+                    <Moon className="h-4 w-4" />
+                  ) : (
+                    <Sun className="h-4 w-4" />
+                  )}
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="glass-card z-[120]">
+                {themes.map((themeOption) => {
+                  const Icon = themeOption.icon;
+                  return (
+                    <DropdownMenuItem
+                      key={themeOption.value}
+                      onClick={() => setTheme(themeOption.value as any)}
+                      className={`cursor-pointer ${
+                        theme === themeOption.value ? 'bg-blue-500/10' : ''
+                      }`}
+                    >
+                      <Icon className="h-4 w-4 mr-2" />
+                      {themeOption.label}
+                    </DropdownMenuItem>
+                  );
+                })}
+              </DropdownMenuContent>
+            </DropdownMenu>
 
+            {/* Language Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon" className="hover:bg-blue-500/10 z-[106] w-9 h-9">
@@ -181,10 +205,10 @@ const Header = () => {
             <Button
               variant="ghost"
               size="icon"
-              onClick={toggleTheme}
+              onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
               className="hover:bg-blue-500/10 z-[106] w-8 h-8"
             >
-              {theme === 'dark' ? (
+              {resolvedTheme === 'dark' ? (
                 <Sun className="h-3 w-3" />
               ) : (
                 <Moon className="h-3 w-3" />
@@ -211,17 +235,17 @@ const Header = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[108] lg:hidden"
+                className="absolute inset-0 bg-black/20 z-[100] lg:hidden"
                 onClick={() => setIsOpen(false)}
               />
-              
               {/* Mobile Menu */}
               <motion.div
                 initial={{ opacity: 0, y: -20, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -20, scale: 0.95 }}
                 transition={{ duration: 0.2 }}
-                className="mobile-menu absolute top-full left-4 right-4 mt-2 glass-card rounded-xl p-4 z-[109] lg:hidden shadow-2xl border border-white/10"
+                className="mobile-menu absolute top-full left-4 right-4 mt-2 glass-card rounded-xl p-4 z-[110] lg:hidden shadow-2xl border border-white/10"
+
               >
                 <div className="space-y-2">
                   {/* Navigation Links */}
@@ -243,11 +267,49 @@ const Header = () => {
                     </motion.button>
                   ))}
                   
-                  {/* Language Selector */}
+                  {/* Theme Selector */}
                   <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: navItems.length * 0.05 }}
+                    className="border-t border-border pt-3 mt-3"
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs text-foreground/60 font-medium">Theme</span>
+                      {resolvedTheme === 'dark' ? (
+                        <Moon className="h-3 w-3 text-foreground/60" />
+                      ) : (
+                        <Sun className="h-3 w-3 text-foreground/60" />
+                      )}
+                    </div>
+                    <div className="grid grid-cols-3 gap-1">
+                      {themes.map((themeOption) => {
+                        const Icon = themeOption.icon;
+                        return (
+                          <button
+                            key={themeOption.value}
+                            onClick={() => setTheme(themeOption.value as any)}
+                            className={`p-2 rounded-md text-xs font-medium transition-colors ${
+                              theme === themeOption.value 
+                                ? 'bg-blue-500 text-white' 
+                                : 'bg-blue-500/10 text-foreground/70 hover:bg-blue-500/20'
+                            }`}
+                          >
+                            <div className="flex flex-col items-center space-y-0.5">
+                              <Icon className="h-3 w-3" />
+                              <span className="text-xs">{themeOption.label}</span>
+                            </div>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </motion.div>
+
+                  {/* Language Selector */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: (navItems.length + 1) * 0.05 }}
                     className="border-t border-border pt-3 mt-3"
                   >
                     <div className="flex items-center justify-between mb-2">

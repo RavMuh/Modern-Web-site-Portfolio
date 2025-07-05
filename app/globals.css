@@ -49,7 +49,7 @@
   }
   
   .dark {
-    --background: 0 0% 6.7%;
+    --background: 0 0% 3%;
     --foreground: 0 0% 98%;
     --card: 0 0% 6.7%;
     --card-foreground: 0 0% 98%;
@@ -80,10 +80,15 @@
   * {
     @apply border-border;
   }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
-    @apply bg-background text-foreground;
-    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%);
+    @apply bg-background text-foreground dark:bg-background dark:text-foreground font-sans antialiased min-h-screen overflow-x-hidden;
     min-height: 100vh;
+    overflow-x: hidden;
   }
 }
 
@@ -116,27 +121,6 @@
     box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.25), 
                 0 0 0 1px rgba(59, 130, 246, 0.1);
   }
-  
-  .scroll-smooth {
-    scroll-behavior: smooth;
-  }
-}
-
-.typing-animation {
-  overflow: hidden;
-  border-right: 2px solid #3b82f6;
-  white-space: nowrap;
-  animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: #3b82f6 }
 }
 
 .floating-animation {
@@ -203,11 +187,6 @@
   @apply bg-blue-600;
 }
 
-/* Smooth scroll for anchor links */
-html {
-  scroll-behavior: smooth;
-}
-
 /* Enhanced Glassmorphism effect */
 .glassmorphism {
   background: rgba(59, 130, 246, 0.25);
@@ -232,8 +211,8 @@ html {
 }
 
 .dark .glassmorphism {
-  background: rgba(59, 130, 246, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(59, 130, 246, 0.37);
+  background: rgba(59, 130, 246, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(59, 130, 246, 0.25);
   border: 1px solid rgba(59, 130, 246, 0.1);
 }
 
@@ -241,8 +220,66 @@ html {
   background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, transparent 50%, rgba(59, 130, 246, 0.02) 100%);
 }
 
+/* Dark mode specific styles */
+.dark .glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.dark .gradient-text {
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Smooth theme transitions */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.8);
+}
+
 /* Z-index utilities */
 .z-header { z-index: 100; }
 .z-dropdown { z-index: 120; }
 .z-modal { z-index: 150; }
 .z-tooltip { z-index: 200; }
+
+/* Performance optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .floating-animation {
+    animation: none;
+  }
+}

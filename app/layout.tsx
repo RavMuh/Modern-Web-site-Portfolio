@@ -1,8 +1,10 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
-import { ThemeProvider } from '@/contexts/ThemeContext';
+import { ThemeProvider } from 'next-themes';
 import { LanguageProvider } from '@/contexts/LanguageContext';
+import { Toaster } from '@/components/ui/sonner';
+import Header from '@/components/layout/Header';
 
 const poppins = Poppins({ 
   subsets: ['latin'],
@@ -25,10 +27,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${poppins.variable} font-sans antialiased`}>
-        <ThemeProvider>
+      <body className={`${poppins.variable} font-sans antialiased bg-background text-foreground`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <LanguageProvider>
+            <Header />
             {children}
+            <Toaster />
           </LanguageProvider>
         </ThemeProvider>
       </body>

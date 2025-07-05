@@ -86,5 +86,11 @@ const config: Config = {
     },
   },
   plugins: [require('tailwindcss-animate')],
+  safelist: [
+    'bg-background',
+    'dark:bg-background',
+    'text-foreground',
+    'dark:text-foreground',
+  ],
 };
 export default config;
