@@ -208,16 +208,11 @@ const Header = () => {
               onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
               className="hover:bg-blue-500/10 z-[106] w-8 h-8"
             >
-              {resolvedTheme === 'dark' ? (
-                <Sun className="h-3 w-3" />
-              ) : (
-                <Moon className="h-3 w-3" />
-              )}
             </Button>
 
             <Button
               variant="ghost"
-              size="icon"
+              size="icon" 
               onClick={() => setIsOpen(!isOpen)}
               className="hover:bg-blue-500/10 z-[106] w-8 h-8"
             >
