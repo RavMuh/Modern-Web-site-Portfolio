@@ -37,6 +37,15 @@ const Projects = () => {
       technologies: ['Python', 'TensorFlow', 'D3.js', 'Flask'],
       demoUrl: 'https://book-home-blond.vercel.app/',
       githubUrl: 'https://github.com/RavMuh/Book-home-Figma'
+    },
+    {
+      id: 4,
+      title: t('projects.VeloShop'),
+      description: t('projects.VeloShopDesc'),
+      image: '/veloshop.png',
+      technologies: ['Python', 'TensorFlow', 'D3.js', 'Flask'],
+      demoUrl: 'https://velo-shop-uzb.vercel.app/',
+      githubUrl: 'https://github.com/RavMuh/VeloShop'
     }
   ];
 

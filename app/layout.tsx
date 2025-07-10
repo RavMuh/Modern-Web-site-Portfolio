@@ -17,7 +17,12 @@ export const metadata: Metadata = {
   description: 'Professional portfolio of Muhammadamin - Frontend Developer specializing in React, Next.js, and modern web technologies.',
   keywords: 'frontend developer, react developer, next.js, web development, portfolio',
   authors: [{ name: 'Muhammadamin' }],
-  viewport: 'width=device-width, initial-scale=1',
+  // viewport bu yerda emas
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({

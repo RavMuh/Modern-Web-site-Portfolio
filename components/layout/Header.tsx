@@ -19,6 +19,11 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState('home');
   const { theme, setTheme, resolvedTheme } = useTheme();
   const { language, setLanguage, t } = useLanguage();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const navItems = [
     { id: 'home', label: t('nav.home') },
@@ -150,30 +155,34 @@ const Header = () => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon" className="hover:bg-blue-500/10 z-[106] w-9 h-9">
-                  {resolvedTheme === 'dark' ? (
-                    <Moon className="h-4 w-4" />
-                  ) : (
-                    <Sun className="h-4 w-4" />
-                  )}
+                  {mounted ? (
+                    resolvedTheme === 'dark' ? (
+                      <Moon className="h-4 w-4" />
+                    ) : (
+                      <Sun className="h-4 w-4" />
+                    )
+                  ) : null}
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="glass-card z-[120]">
-                {themes.map((themeOption) => {
-                  const Icon = themeOption.icon;
-                  return (
-                    <DropdownMenuItem
-                      key={themeOption.value}
-                      onClick={() => setTheme(themeOption.value as any)}
-                      className={`cursor-pointer ${
-                        theme === themeOption.value ? 'bg-blue-500/10' : ''
-                      }`}
-                    >
-                      <Icon className="h-4 w-4 mr-2" />
-                      {themeOption.label}
-                    </DropdownMenuItem>
-                  );
-                })}
-              </DropdownMenuContent>
+              {mounted && (
+                <DropdownMenuContent align="end" className="glass-card z-[120]">
+                  {themes.map((themeOption) => {
+                    const Icon = themeOption.icon;
+                    return (
+                      <DropdownMenuItem
+                        key={themeOption.value}
+                        onClick={() => setTheme(themeOption.value as any)}
+                        className={`cursor-pointer ${
+                          theme === themeOption.value ? 'bg-blue-500/10' : ''
+                        }`}
+                      >
+                        <Icon className="h-4 w-4 mr-2" />
+                        {themeOption.label}
+                      </DropdownMenuItem>
+                    );
+                  })}
+                </DropdownMenuContent>
+              )}
             </DropdownMenu>
 
             {/* Language Dropdown */}
@@ -208,6 +217,13 @@ const Header = () => {
               onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
               className="hover:bg-blue-500/10 z-[106] w-8 h-8"
             >
+              {mounted ? (
+                resolvedTheme === 'dark' ? (
+                  <Moon className="h-4 w-4" />
+                ) : (
+                  <Sun className="h-4 w-4" />
+                )
+              ) : null}
             </Button>
 
             <Button
@@ -271,11 +287,13 @@ const Header = () => {
                   >
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-xs text-foreground/60 font-medium">Theme</span>
-                      {resolvedTheme === 'dark' ? (
-                        <Moon className="h-3 w-3 text-foreground/60" />
-                      ) : (
-                        <Sun className="h-3 w-3 text-foreground/60" />
-                      )}
+                      {mounted ? (
+                        resolvedTheme === 'dark' ? (
+                          <Moon className="h-3 w-3 text-foreground/60" />
+                        ) : (
+                          <Sun className="h-3 w-3 text-foreground/60" />
+                        )
+                      ) : null}
                     </div>
                     <div className="grid grid-cols-3 gap-1">
                       {themes.map((themeOption) => {

@@ -111,7 +111,8 @@ const translations = {
     'projects.chatAppDesc': 'A modern chat application with real-time messaging, user authentication, and responsive design.',
     'projects.elearning': 'E-Learning Platform',
     'projects.elearningDesc': 'Comprehensive educational platform with course management, progress tracking, and interactive learning tools.',
-    
+    'projects.VeloShop':'VeloShop',
+    'projects.VeloShopDesc':'A modern e-commerce platform for buying and selling bicycles. Features include product management, shopping cart, and payment integration. 😁',
     // Services Section
     'services.title': 'Services',
     'services.description': 'I offer comprehensive web development services to help bring your ideas to life with modern technologies and best practices.',
@@ -261,7 +262,9 @@ const translations = {
     'projects.chatAppDesc': 'Real vaqt xabar almashish, foydalanuvchi autentifikatsiyasi va javobgar dizayn bilan zamonaviy chat ilovasi.',
     'projects.elearning': 'Elektron Ta\'lim Platformasi',
     'projects.elearningDesc': 'Kurs boshqaruvi, taraqqiyot kuzatuvi va interaktiv o\'rganish vositalari bilan keng qamrovli ta\'lim platformasi.',
-    
+    'projects.VeloShop':'VeloShop',
+    'projects.VeloShopDesc':'VeloShop - bu o\'zbekistonning eng yaxshi veb-dasturlash kompaniyasi. Biz sizga eng yaxshi veb-dasturlash xizmatlarini taklif qilamiz.',
+
     // Services Section
     'services.title': 'Xizmatlar',
     'services.description': 'Men sizning g\'oyalaringizni zamonaviy texnologiyalar va eng yaxshi amaliyotlar bilan hayotga tatbiq etishga yordam berish uchun keng qamrovli veb-dasturlash xizmatlarini taklif qilaman.',
@@ -411,7 +414,9 @@ const translations = {
     'projects.chatAppDesc': 'Современное приложение чата с обменом сообщениями в реальном времени, аутентификацией пользователей и адаптивным дизайном.',
     'projects.elearning': 'Платформа Электронного Обучения',
     'projects.elearningDesc': 'Комплексная образовательная платформа с управлением курсами, отслеживанием прогресса и интерактивными инструментами обучения.',
-    
+    'projects.VeloShop':'VeloShop',
+    'projects.VeloShopDesc':'Современная платформа электронной коммерции для покупки и продажи велосипедов. Функции включают управление продуктами, корзиной и интеграцией платежей. 😁',
+
     // Services Section
     'services.title': 'Услуги',
     'services.description': 'Я предлагаю комплексные услуги веб-разработки, чтобы помочь воплотить ваши идеи в жизнь с помощью современных технологий и лучших практик.',
