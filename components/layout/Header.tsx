@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Moon, Sun, Globe, Monitor } from 'lucide-react';
 import { useTheme } from 'next-themes';
@@ -25,13 +25,13 @@ const Header = () => {
     setMounted(true);
   }, []);
 
-  const navItems = [
+  const navItems = useMemo(() => [
     { id: 'home', label: t('nav.home') },
     { id: 'about', label: t('nav.about') },
     { id: 'projects', label: t('nav.projects') },
     { id: 'services', label: t('nav.services') },
     { id: 'contact', label: t('nav.contact') },
-  ];
+  ], [t]);
 
   const languages = [
     { code: 'en', name: 'EN', flag: '🇺🇸' },

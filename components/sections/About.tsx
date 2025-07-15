@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
@@ -201,9 +202,11 @@ const About = () => {
                   className="glass-card p-6 md:p-8 rounded-3xl"
                 >
                   <div className="w-full h-64 md:h-80 rounded-2xl overflow-hidden mb-6">
-                    <img
-                      src="/20366517-1 copy.jpg"
+                    <Image
+                      src="/20366517-1.png"
                       alt="About Muhammadamin"
+                      width={400}
+                      height={320}
                       className="w-full h-full object-cover"
                     />
                   </div>

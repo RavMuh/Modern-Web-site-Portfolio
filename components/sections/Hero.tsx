@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Download, Mail, ChevronDown } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
@@ -57,7 +58,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-base md:text-lg text-foreground/80 mb-3 md:mb-4"
+              className="text-base md:text-4xl font-bold text-foreground/80 mb-3 md:mb-4"
             >
               {t('hero.greeting')}
             </motion.p>
@@ -66,9 +67,9 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 md:mb-4"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 md:mb-4 font-black leading-none"
             >
-              <span className="gradient-text">{t('hero.name')}</span>
+              <span className="block bg-gradient-to-r from-blue-400 via-blue-400 to-purple-600 bg-clip-text text-transparent animate-gradient-shift">{t('hero.name')}</span>
             </motion.h1>
 
             <motion.div
@@ -77,7 +78,7 @@ const Hero = () => {
               transition={{ delay: 0.6 }}
               className="mb-4 md:mb-6"
             >
-              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-foreground/90 h-8 md:h-10 lg:h-12">
+              <h2 className="block bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent animate-gradient-shift text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-foreground/90 h-8 md:h-10 lg:h-12">
                 {displayedText}
                 <span className="animate-pulse">|</span>
               </h2>
@@ -110,9 +111,9 @@ const Hero = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white px-6 md:px-8 py-4 md:py-6 text-sm md:text-lg rounded-full hover-3d w-full sm:w-auto"
+                className="border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white px-6 md:px-8 py-4 md:py-6 text-sm md:text-lg dark:bg-black/30 rounded-full hover-3d w-full sm:w-auto"
               >
-                <Download className="mr-2 h-4 w-4 md:h-5 md:w-5" />
+                <Download className="mr-2 h-4 w-4 md:h-5 md:w-5 " />
                 {t('hero.download')}
               </Button>
             </motion.div>
@@ -139,9 +140,11 @@ const Hero = () => {
                 className="relative z-10 w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-blue-500/20 shadow-2xl floating-animation"
               >
                 <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-blue-500/10 flex items-center justify-center">
-                  <img
-                    src="/20366517-1 copy.jpg"
+                  <Image
+                    src="/20366517-1.png"
                     alt="Muhammadamin"
+                    width={320}
+                    height={320}
                     className="w-full h-full object-cover"
                   />
                 </div>

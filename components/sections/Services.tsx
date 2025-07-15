@@ -133,7 +133,7 @@ const Services = () => {
                   {/* Icon with Gradient Background */}
                   <div className="relative mb-4 md:mb-6">
                     <div className={`w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-r ${service.color} p-0.5 mb-4`}>
-                      <div className="w-full h-full bg-background rounded-2xl flex items-center justify-center group-hover:bg-transparent transition-colors duration-300">
+                      <div className="w-full h-full dark:bg-black/50 bg-background rounded-2xl flex items-center justify-center group-hover:bg-transparent transition-colors duration-300">
                         <IconComponent className="h-6 w-6 md:h-8 md:w-8 text-foreground group-hover:text-white transition-colors duration-300" />
                       </div>
                     </div>

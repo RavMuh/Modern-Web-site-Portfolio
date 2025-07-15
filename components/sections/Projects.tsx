@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { ExternalLink, Github } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
@@ -92,12 +93,16 @@ const Projects = () => {
                 variants={itemVariants}
                 transition={{ delay: index * 0.1 }}
                 className="glass-card rounded-2xl overflow-hidden card-3d group relative"
+                whileHover={typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches ? { y: -8, boxShadow: '0 8px 32px 0 rgba(0,0,0,0.15)' } : {}}
+                whileTap={{ scale: 0.97 }}
               >
                 {/* Project Image */}
                 <div className="relative overflow-hidden">
-                  <img
+                  <Image
                     src={project.image}
                     alt={project.title}
+                    width={400}
+                    height={192}
                     className="w-full h-40 md:h-48 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -163,7 +168,7 @@ const Projects = () => {
             <Button
               variant="outline"
               size="lg"
-              className="border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white px-6 md:px-8 py-4 md:py-6 text-sm md:text-lg rounded-full hover-3d"
+              className="border-blue-500 text-blue-500 dark:bg-black/30 hover:bg-blue-500 hover:text-white px-6 md:px-8 py-4 md:py-6 text-sm md:text-lg rounded-full hover-3d"
             >
               <Github className="mr-2 h-4 w-4 md:h-5 md:w-5"  />
               <a href="https://github.com/RavMuh">{t('projects.github')}</a>

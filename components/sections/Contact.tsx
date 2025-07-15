@@ -72,21 +72,31 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      toast({
-        title: "Success!",
-        description: t('contact.success'),
+      const res = await fetch('/api/contact-telegram', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
-      
-      setFormData({ name: '', email: '', message: '' });
+      const data = await res.json();
+      if (data.success) {
+        toast({
+          title: 'Success!',
+          description: t('contact.success'),
+        });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        toast({
+          title: 'Error',
+          description: t('contact.error'),
+          variant: 'destructive',
+        });
+      }
     } catch (error) {
       toast({
-        title: "Error",
+        title: 'Error',
         description: t('contact.error'),
-        variant: "destructive",
+        variant: 'destructive',
       });
     } finally {
       setIsSubmitting(false);
@@ -207,7 +217,7 @@ const Contact = () => {
                       required
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full"
+                      className="w-full bg-gray-50/90 dark:bg-black/30 backdrop-blur-sm border-blue-200 dark:border-blue-400 focus:border-blue-500 dark:focus:border-blue-400"
                       placeholder={t('contact.namePlaceholder')}
                     />
                   </div>
@@ -223,7 +233,7 @@ const Contact = () => {
                       required
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full"
+                      className="w-full bg-gray-50/90 dark:bg-black/30 backdrop-blur-sm border-blue-200 dark:border-blue-400 focus:border-blue-500 dark:focus:border-blue-400"
                       placeholder={t('contact.emailPlaceholder')}
                     />
                   </div>
@@ -239,7 +249,7 @@ const Contact = () => {
                       value={formData.message}
                       onChange={handleInputChange}
                       rows={5}
-                      className="w-full resize-none"
+                      className="w-full resize-none bg-gray-50/90 dark:bg-black/30 backdrop-blur-sm border-blue-200 dark:border-blue-400 focus:border-blue-500 dark:focus:border-blue-400"
                       placeholder={t('contact.messagePlaceholder')}
                     />
                   </div>

@@ -130,7 +130,7 @@ const Background3D: React.FC = () => {
         ].map((card, i) => (
           <div
             key={`card-${i}`}
-            className={`absolute w-48 h-32 rounded-xl backdrop-blur-sm border transition-all duration-1000 animate-card-3d shadow-2xl ${
+            className={`absolute w-48 h-32 rounded-xl backdrop-blur-sm border transition-all duration-2500 animate-card-3d shadow-2xl ${
               resolvedTheme === 'dark'
                 ? 'bg-gray-900/40 border-gray-700/30' 
                 : 'bg-white/50 border-gray-200/40'
