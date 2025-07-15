@@ -112,9 +112,17 @@ const Hero = () => {
                 variant="outline"
                 size="lg"
                 className="border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white px-6 md:px-8 py-4 md:py-6 text-sm md:text-lg dark:bg-black/30 rounded-full hover-3d w-full sm:w-auto"
+                asChild
               >
-                <Download className="mr-2 h-4 w-4 md:h-5 md:w-5 " />
-                {t('hero.download')}
+                <a
+                  href="/cv.pdf"
+                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Download className="mr-2 h-4 w-4 md:h-5 md:w-5 " />
+                  {t('hero.download')}
+                </a>
               </Button>
             </motion.div>
           </motion.div>
