@@ -1,20 +1,38 @@
 {
   "pages": {
-    "/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/layout.css",
-      "static/chunks/app/layout.js"
-    ],
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+    "/_not-found/page": [
+      "static/chunks/webpack-0cb8fc4bc71ca2a7.js",
+      "static/chunks/4bd1b696-d45ff09e65c1d779.js",
+      "static/chunks/964-f0c701f61aef1e19.js",
+      "static/chunks/main-app-6b4954c07e805e5d.js",
+      "static/chunks/app/_not-found/page-3ff1572a28b2b75f.js"
     ],
     "/api/contact-telegram/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/contact-telegram/route.js"
+      "static/chunks/webpack-0cb8fc4bc71ca2a7.js",
+      "static/chunks/4bd1b696-d45ff09e65c1d779.js",
+      "static/chunks/964-f0c701f61aef1e19.js",
+      "static/chunks/main-app-6b4954c07e805e5d.js",
+      "static/chunks/app/api/contact-telegram/route-18a9e0f71f86e75a.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack-0cb8fc4bc71ca2a7.js",
+      "static/chunks/4bd1b696-d45ff09e65c1d779.js",
+      "static/chunks/964-f0c701f61aef1e19.js",
+      "static/chunks/main-app-6b4954c07e805e5d.js",
+      "static/css/59c6dd044acc92a7.css",
+      "static/chunks/775-874c5b528e1e2e91.js",
+      "static/chunks/588-b6a4315b5c760783.js",
+      "static/chunks/app/layout-cadf0da3177d2f82.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-0cb8fc4bc71ca2a7.js",
+      "static/chunks/4bd1b696-d45ff09e65c1d779.js",
+      "static/chunks/964-f0c701f61aef1e19.js",
+      "static/chunks/main-app-6b4954c07e805e5d.js",
+      "static/chunks/775-874c5b528e1e2e91.js",
+      "static/chunks/417-367cc12aebba1c24.js",
+      "static/chunks/588-b6a4315b5c760783.js",
+      "static/chunks/app/page-343262da4d7b54bd.js"
     ]
   }
 }

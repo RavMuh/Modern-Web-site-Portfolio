@@ -50,7 +50,7 @@ const Contact = () => {
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      href: 'https://linkedin.com/in/muhammadamin',
+      href: 'https://www.linkedin.com/in/muhammadamin-ravshanov-37b659363/',
       color: 'hover:text-blue-600'
     },
     {

@@ -30,7 +30,7 @@ const Footer = () => {
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      href: 'https://linkedin.com/in/muhammadamin',
+      href: 'https://www.linkedin.com/in/muhammadamin-ravshanov-37b659363/',
     },
     {
       icon: MessageSquare,
